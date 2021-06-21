@@ -1,6 +1,6 @@
 # msgqywx
 
-使用企业微信的应用消息推送实时信息  
+使用企业微信的应用消息推送实时信息
 
 注：markdown支持无法在微信中查看
 
@@ -44,7 +44,7 @@ if __name__ == '__main__':
                 >请准时参加会议。
                 >
                 >如需修改会议信息，请点击：[修改会议信息](https://work.weixin.qq.com)"""
-    wx.send_msg(md_text, msgtype="markdown", raise_error=True)
+    wx.send_msg(md_text, msgtype="markdown", raise_error=True)  # 发送markdown消息，注意markdown消息仅企业微信可接收
 ```
 
 ### Limit
