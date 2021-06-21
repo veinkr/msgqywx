@@ -50,7 +50,7 @@ class msgqywx:
                 access_json = json.load(f)
                 cur_time = datetime.now().timestamp()
                 if 0 < cur_time - float(access_json["cur_time"]) < 7000:
-                    print("通过文件获取到access_token")
+                    # print("通过文件获取到access_token")
                     return access_json["access_token"]
                 else:
                     f.close()
@@ -61,9 +61,10 @@ class msgqywx:
             print("未知错误，请告知作者：\n", err)
             return self.access_token_to_jsonfile()["access_token"]
 
-    def send_msg(self, message, touser: str = None, raise_error: bool = False):
+    def send_msg(self, message, msgtype: str = 'text', touser: str = None, raise_error: bool = False):
         """
         send_msg发送文本类消息
+        :param msgtype: 消息类型，仅支持 text 和 markdown
         :param raise_error: 是否抛出发送错误(response不等于200的情况)，默认为False
         :param message: 消息内容，当前仅支持文本内容
         :param touser: 发送用户，和初始化类时的touser不能同时为None
@@ -76,11 +77,19 @@ class msgqywx:
                    self.get_access_token()
         send_values = {
             "touser": touser,
-            "msgtype": "text",
             "agentid": self.agentid,
             "text": {"content": message},
-            "safe": "0"
+            "markdown": {"content": message},
         }
+        if msgtype == 'text':
+            send_values["msgtype"] = "text"
+            del send_values["markdown"]
+        elif msgtype == 'markdown':
+            send_values["msgtype"] = "markdown"
+            del send_values["text"]
+        else:
+            raise Exception("不支持的msgtype")
+
         respone = requests.post(send_url, json=send_values)
         if respone.status_code == 200:
             return respone
