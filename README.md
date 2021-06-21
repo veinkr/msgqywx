@@ -5,7 +5,7 @@
 ### Install
 
 ```
-pip install https://github.com/veink-y/msgqywx.git
+pip install git+https://github.com/veink-y/msgqywx.git
 ```
 
 ### Params
