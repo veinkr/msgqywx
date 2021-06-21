@@ -41,6 +41,7 @@ class msgqywx:
                 json.dump(wite_json, f)
             return wite_json
         else:
+            print(req.text)
             raise Exception("获取企业微信的access_token失败,请检查企业ID（corpid）和应用Secret（corpsecret）是否正确")
 
     def get_access_token(self):
