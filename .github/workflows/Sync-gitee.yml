@@ -9,7 +9,7 @@ jobs:
     - name: sync-gitee-mirror
       uses: abersheeran/sync-gitee-mirror@v1-alpha
       with:
-        repository: yhf2lj/msgqywx
+        repository: veink-y/msgqywx
         username: ${{ secrets.USERNAME }}
         password: ${{ secrets.PASSWORD }}
 
