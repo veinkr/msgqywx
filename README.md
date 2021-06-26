@@ -8,7 +8,7 @@
 
 ```
 pip install git+https://github.com/veink-y/msgqywx.git
-# github访问困难用户
+# github访问困难
 pip install git+https://gitee.com/yhf2lj/msgqywx.git
 ```
 
