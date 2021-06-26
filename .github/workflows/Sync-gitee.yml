@@ -1,0 +1,15 @@
+name: Sync Repository Action
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: sync-gitee-mirror
+      uses: abersheeran/sync-gitee-mirror@v1-alpha
+      with:
+        repository: yhf2lj/msgqywx
+        username: ${{ secrets.USERNAME }}
+        password: ${{ secrets.PASSWORD }}
+
