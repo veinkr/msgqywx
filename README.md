@@ -8,8 +8,6 @@
 
 ```
 pip install git+https://github.com/veinkr/msgqywx.git
-# github访问困难
-pip install git+https://gitee.com/veink-y/msgqywx.git
 ```
 
 ### Params
