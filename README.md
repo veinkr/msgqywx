@@ -7,7 +7,7 @@
 ### Install
 
 ```
-pip install git+https://github.com/veinkr/msgqywx.git
+pip install msgqywx
 ```
 
 ### Params
