@@ -10,7 +10,7 @@ with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="msgqywx",
-    version="0.3.0",
+    version="0.4.0",
     description="发送企业微信应用消息",
     long_description=long_description,
     long_description_content_type="text/markdown",
