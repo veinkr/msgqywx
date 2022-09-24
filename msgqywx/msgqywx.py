@@ -25,7 +25,7 @@ class msgqywx:
         self.agentid = agentid
         self.touser = touser
         self.seckey_md5 = md5((self.corpid + self.corpsecret).encode(encoding='utf-8')).hexdigest()
-        self.accessconffile = os.path.join(os.path.dirname(__file__), f"{self.seckey_md5}.conf")
+        self.accessconffile = os.path.join("~/.config/msgqywx", f"{self.seckey_md5}.conf")
 
     def access_token_to_jsonfile(self):
         url = 'https://qyapi.weixin.qq.com/cgi-bin/gettoken'
