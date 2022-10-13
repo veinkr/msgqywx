@@ -10,7 +10,7 @@ with open(path.join(this_directory, "README.md"), encoding="utf-8") as f:
 
 setup(
     name="msgqywx",
-    version="0.6.0",
+    version="0.7.0",
     description="发送企业微信应用消息",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -20,9 +20,5 @@ setup(
     url="https://github.com/veink-y/msgqywx",
     keywords="企业微信 消息",
     install_requires=["requests"],
-    classifiers=[
-        "Development Status :: 4 - Beta",
-        "Programming Language :: Python :: 3.6",
-    ],
     packages=["msgqywx"],
 )
