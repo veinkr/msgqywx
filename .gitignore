@@ -129,3 +129,7 @@ dmypy.json
 .pyre/
 /example.py
 /msgqywx/c9f6b7e85768986acf1df28d4a745dcf.conf
+
+
+# jetbrain
+.fleet
