@@ -75,15 +75,15 @@ class msgqywx:
         :return: 微信返回的response，可以自行处理错误信息，也可不处理
         """
         if msgtype not in ['text', 'markdown']:
-            raise TypeError("Unsupported msgtype, only text and markdown acceptable")
+            raise TypeError("Unsupported msgtype, only `text` and `markdown` are acceptable")
 
-        touser = touser if touser else self.touser
+        touser = touser if touser else self.touser # use or
         if touser is None:
-            raise UserError("无发送用户")
+            raise UserError("touser must not None")
 
         send_url = 'https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token=' + \
-                   self.get_access_token()
-        send_values = {
+                   self.get_access_token() # use f-string
+        send_values = { # change send_values to payload
             "touser": touser,
             "agentid": self.agentid,
             "msgtype": msgtype,
@@ -91,10 +91,7 @@ class msgqywx:
         }
 
         response = requests.post(send_url, json=send_values)
-        if response.status_code == 200:
-            return response
+        if not response.ok and raise_error:
+            response.raise_for_status()
         else:
-            if raise_error:
-                response.raise_for_status()
-            else:
-                return response
+            return response
