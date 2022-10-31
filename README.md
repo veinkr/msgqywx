@@ -17,6 +17,13 @@ pip install msgqywx
 - agentid: 应用ID，在后台应用中获取
 - touser: 接收者用户名(微信账号),多个用户用|分割,与发送消息的touser至少存在一个
 
+### Todo
+
+- Add Feishu
+- Optimize code
+- Add unit test
+
+
 ### Usage
 
 ```python
