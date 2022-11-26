@@ -19,3 +19,5 @@ class feishu:
         else:
             if raise_error:
                 response.raise_for_status()
+            else:
+                return response
