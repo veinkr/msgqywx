@@ -41,7 +41,6 @@ class msgqywx:
         )
 
     def access_token_to_jsonfile(self):
-
         values = {
             "corpid": self.corpid,
             "corpsecret": self.corpsecret,
@@ -55,7 +54,7 @@ class msgqywx:
             }
             with open(self.access_conf_file, "w") as f:
                 json.dump(secret_json, f)
-            return secret_json
+            return secret_json["access_token"]
         else:
             print(response.text)
             raise Exception(
@@ -66,13 +65,10 @@ class msgqywx:
         if os.path.exists(self.access_conf_file):
             with open(self.access_conf_file, "r") as f:
                 access_json = json.load(f)
+                f.close()
                 if access_json.get("expire_time", 0) > datetime.now().timestamp():
                     return access_json["access_token"]
-                else:
-                    f.close()
-                    return self.access_token_to_jsonfile()["access_token"]
-        else:
-            return self.access_token_to_jsonfile()["access_token"]
+        return self.access_token_to_jsonfile()
 
     def send_msg(
         self,
@@ -98,10 +94,8 @@ class msgqywx:
         if touser is None:
             raise UserError("touser must not None")
 
-        send_url = (
-            "https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token="
-            + self.get_access_token()
-        )  # use f-string
+        send_url = f"https://qyapi.weixin.qq.com/cgi-bin/message/send?access_token={self.get_access_token()}"
+
         payload = {
             "touser": touser,
             "agentid": self.agentid,
